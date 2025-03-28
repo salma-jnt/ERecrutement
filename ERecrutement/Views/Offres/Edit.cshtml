@@ -1,0 +1,28 @@
+﻿@model ERecrutement.Models.Offre
+@{
+    ViewData["Title"] = "Modifier l'Offre";
+}
+
+<h2>Modifier l'Offre</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Poste"></label>
+        <input asp-for="Poste" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TypeContrat"></label>
+        <input asp-for="TypeContrat" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Remuneration"></label>
+        <input asp-for="Remuneration" type="number" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    <a class="btn btn-secondary" href="@Url.Action("MesOffres", "Recruteurs")">Annuler</a>
+</form>

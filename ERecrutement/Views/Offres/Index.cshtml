@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ERecrutement.Models.Offre>
+@{
+    ViewData["Title"] = "Liste des Offres";
+}
+<h2>Offres d'emploi</h2>
+
+<form method="get">
+    <input type="text" name="secteur" placeholder="Secteur" />
+    <input type="text" name="profil" placeholder="Profil" />
+    <input type="number" name="remuneration" placeholder="Rémunération min" />
+    <button type="submit">Rechercher</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Poste</th>
+            <th>Type de Contrat</th>
+            <th>Rémunération</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offre in Model)
+        {
+            <tr>
+                <td>@offre.Poste</td>
+                <td>@offre.TypeContrat</td>
+                <td>@offre.Remuneration €</td>
+                <td>
+                    @if (User.IsInRole("Candidat"))
+                    {
+                        <a class="btn btn-primary" asp-action="Postuler" asp-route-offreId="@offre.Id">Postuler</a>
+                    }
+
+                    <a class="btn btn-info" href="@Url.Action("Details", "Offres", new { id = offre.Id })">Voir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

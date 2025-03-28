@@ -1,0 +1,22 @@
+﻿@model ERecrutement.Models.Offre
+
+@{
+    ViewData["Title"] = "Supprimer une Offre";
+}
+
+<h2>Supprimer une Offre</h2>
+<h4>Es-tu sûr de vouloir supprimer cette offre ?</h4>
+
+<div>
+    <strong>Poste:</strong> @Model.Poste <br />
+    <strong>Type de Contrat:</strong> @Model.TypeContrat <br />
+    <strong>Secteur:</strong> @Model.Secteur <br />
+    <strong>Profil:</strong> @Model.Profil <br />
+    <strong>Rémunération:</strong> @Model.Remuneration €
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <a asp-action="MesOffres" class="btn btn-secondary">Annuler</a>
+</form>

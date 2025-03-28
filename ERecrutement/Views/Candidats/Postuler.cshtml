@@ -1,0 +1,7 @@
+﻿@model ERecrutement.Models.Candidature
+
+<h2>Remplissez votre candidature</h2>
+<form asp-action="Postuler" method="post">
+    <input type="hidden" asp-for="OffreId" />
+    <button type="submit" class="btn btn-primary">Postuler</button>
+</form>

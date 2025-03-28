@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ERecrutement.Models.Offre>
+
+@{
+    ViewData["Title"] = "Offres d'emploi";
+}
+
+<h2>Offres d'emploi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Poste</th>
+            <th>Secteur</th>
+            <th>Profil</th>
+            <th>Type de Contrat</th>
+            <th>Rémunération</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offre in Model)
+        {
+            <tr>
+                <td>@offre.Poste</td>
+                <td>@offre.Secteur</td>
+                <td>@offre.Profil</td>
+                <td>@offre.TypeContrat</td>
+                <td>@offre.Remuneration</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("Postuler", "Candidats", new { offreId = offre.Id })">
+                        Postuler
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

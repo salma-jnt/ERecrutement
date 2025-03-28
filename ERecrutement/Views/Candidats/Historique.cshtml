@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ERecrutement.Models.Candidature>
+
+<h2>Historique des Candidatures</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Poste</th>
+            <th>Date de Postulation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidature in Model)
+        {
+            <tr>
+                <td>@(candidature.Offre != null ? candidature.Offre.Poste : "Offre inconnue")</td>
+                <td>@candidature.DatePostulation.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a class="btn btn-danger" href="@Url.Action("Annuler", "Candidats", new { id = candidature.Id })">
+                        Annuler
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

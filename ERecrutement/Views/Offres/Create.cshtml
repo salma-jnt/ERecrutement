@@ -1,0 +1,48 @@
+﻿@model ERecrutement.Models.Offre
+
+<h2>Créer une Offre</h2>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Poste"></label>
+        <input asp-for="Poste" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TypeContrat"></label>
+        <input asp-for="TypeContrat" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Secteur"></label>
+        <input asp-for="Secteur" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Profil"></label>
+        <input asp-for="Profil" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Remuneration"></label>
+        <input asp-for="Remuneration" type="number" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

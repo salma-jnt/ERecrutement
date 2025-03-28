@@ -1,0 +1,14 @@
+﻿@model ERecrutement.Models.Offre
+@{
+    ViewData["Title"] = "Détails de l'Offre";
+}
+<h2>@Model.Poste</h2>
+<p><strong>Type de Contrat :</strong> @Model.TypeContrat</p>
+<p><strong>Secteur :</strong> @Model.Secteur</p>
+<p><strong>Profil recherché :</strong> @Model.Profil</p>
+<p><strong>Rémunération :</strong> @Model.Remuneration €</p>
+
+@if (User.IsInRole("Candidat"))
+{
+    <a class="btn btn-success" href="@Url.Action("Postuler", "Candidats", new { id = Model.Id })">Postuler</a>
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ERecrutement.Models.Offre>
+
+@{
+    ViewData["Title"] = "Mes Offres";
+}
+
+<h2>Mes Offres</h2>
+@if (User.IsInRole("Recruteur"))
+{
+    <a class="btn btn-primary" href="@Url.Action("Create", "Recruteurs")">Créer une Offre</a>
+}
+else
+{
+    <p style="color: red;">⚠ Vous n'avez pas le rôle de recruteur</p>
+}
+
+<a class="btn btn-success" href="@Url.Action("Create", "Recruteurs")">Créer une Offre</a>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Poste</th>
+                <th>Secteur</th>
+                <th>Profil</th>
+                <th>Type de Contrat</th>
+                <th>Rémunération</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offre in Model)
+            {
+                <tr>
+                    <td>@offre.Poste</td>
+                    <td>@offre.Secteur</td>
+                    <td>@offre.Profil</td>
+                    <td>@offre.TypeContrat</td>
+                    <td>@offre.Remuneration €</td>
+                    <td>
+                        <a class="btn btn-warning" href="@Url.Action("Edit", "Recruteurs", new { id = offre.Id })">Modifier</a>
+                        <a class="btn btn-danger" href="@Url.Action("Delete", "Recruteurs", new { id = offre.Id })">Supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Aucune offre trouvée.</p>
+}
+
